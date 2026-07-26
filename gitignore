@@ -15,3 +15,6 @@ Thumbs.db
 
 # Environment / secrets (in case you ever add config here)
 .env
+
+# Model file kept out of the repo — see README for how to supply it
+backend/model/*.keras
