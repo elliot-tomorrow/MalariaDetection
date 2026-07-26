@@ -1,0 +1,17 @@
+# Python
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+
+# Environment / secrets (in case you ever add config here)
+.env

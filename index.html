@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Smear / Scope — malaria smear classifier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header class="site-header">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span class="brand-name">SMEAR&nbsp;/&nbsp;SCOPE</span>
+  </div>
+  <span class="tag">local, stateless, nothing saved</span>
+</header>
+
+<main>
+  <section class="hero">
+    <p class="eyebrow">field 01 &middot; upload</p>
+    <h1>Put the slide<br/>under the scope.</h1>
+    <p class="lede">
+      Drop a thin or thick blood-smear image into the viewfinder below.
+      The model reads it once, reports what it sees, and forgets it.
+    </p>
+  </section>
+
+  <section class="scope-stage">
+    <div class="viewport" id="viewport" tabindex="0" role="button"
+         aria-label="Upload a blood smear image">
+      <div class="viewport-ring"></div>
+      <div class="crosshair crosshair-v"></div>
+      <div class="crosshair crosshair-h"></div>
+      <div class="scan-line" id="scanLine"></div>
+
+      <img id="preview" alt="" />
+
+      <div class="viewport-empty" id="viewportEmpty">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 16.5V7.5M7.5 12H16.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="9.3" stroke="currentColor" stroke-width="1.1"/>
+        </svg>
+        <p>drop image &nbsp;or&nbsp; click to select</p>
+      </div>
+    </div>
+
+    <input type="file" id="fileInput" accept="image/png, image/jpeg, image/webp, image/bmp" hidden />
+
+    <div class="stage-controls">
+      <button class="btn btn-ghost" id="clearBtn" disabled>clear</button>
+      <button class="btn btn-primary" id="analyzeBtn" disabled>analyze specimen</button>
+    </div>
+
+    <p class="status-line" id="statusLine">awaiting specimen</p>
+  </section>
+
+  <section class="readout" id="readout" hidden>
+    <div class="readout-card">
+      <div class="readout-row readout-primary">
+        <span class="readout-label">result</span>
+        <span class="readout-value" id="resultInfected">—</span>
+      </div>
+      <div class="readout-row">
+        <span class="readout-label">smear thickness</span>
+        <span class="readout-value mono" id="resultThickness">—</span>
+      </div>
+      <div class="readout-row">
+        <span class="readout-label">confidence</span>
+        <span class="readout-value mono" id="resultConfidence">—</span>
+      </div>
+
+      <div class="prob-bars" id="probBars"></div>
+    </div>
+  </section>
+
+  <section class="error-banner" id="errorBanner" hidden></section>
+
+  <section class="privacy-note">
+    <h2>what happens to your image</h2>
+    <ul>
+      <li>The image is sent once to the classifier, read into memory, and never written to disk.</li>
+      <li>Nothing about the image — bytes, filename, or result — is logged or stored.</li>
+      <li>No accounts, cookies, or trackers. Closing this tab leaves nothing behind.</li>
+    </ul>
+    <p class="disclaimer">
+      Research / educational tool only. Not a medical device, not reviewed
+      or cleared by any regulatory body for clinical use. A qualified
+      professional must confirm any result before it informs care.
+    </p>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
